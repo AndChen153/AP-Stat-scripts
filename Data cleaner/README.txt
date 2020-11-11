@@ -1,0 +1,1 @@
+removes parenthesis from covid 19 data from wikipedia for AP statistics project

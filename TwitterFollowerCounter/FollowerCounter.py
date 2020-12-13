@@ -4,12 +4,16 @@ import tweepy
 import time
 
 class TwitterClient(object): 
-
+    
     def __init__(self):
-        CONSUMER_KEY = "lorYCyfLdolyZcBd3L1YvGI4b"
-        CONSUMER_SECRET_KEY = "onCURThXUu4Nh3LsVreji43z3yB2DRIk3ZX09nDdfAzk4VzdYk"
-        ACCESS_TOKEN = "764173298032717825-HR6jsuRav5UnCrXxjFgj6YhsHb51x8i"
-        ACCESS_TOKEN_SECRET = "fIhDmUXC0vMbkUGCrTVgzgk0gKmygXSSNqYlSIfAjuj8Q"
+        keyfile = open(r"C:\Users\Andrew Chen\Dropbox\code\TwitterKeys.txt", "r")
+        keys = []
+        for i in keyfile:
+            keys.append(i)
+        CONSUMER_KEY = keys[0][:-1]
+        CONSUMER_SECRET_KEY = keys[1][:-1]
+        ACCESS_TOKEN = keys[2][:-1]
+        ACCESS_TOKEN_SECRET = keys[3]
         self.tweetsList = []
         try:
             self.auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET_KEY)

@@ -99,7 +99,7 @@ while True:
     # check every 60 seconds
     print("SEARCHING...")
     search.tweetWrite(keywords)
-    time.sleep(60)
+    time.sleep(150)
 
 
 

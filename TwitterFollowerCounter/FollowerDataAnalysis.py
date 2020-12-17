@@ -1,3 +1,6 @@
+'''
+Code to display graphs and find statistics about the data
+'''
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import stats
@@ -5,7 +8,7 @@ from scipy import stats
 followers = []
 
 # open follower count file and add every value to a lit
-readfollowers = open("FollowerCts.txt", "r")
+readfollowers = open("Data/FollowerCts.txt", "r")
 for x in readfollowers:
     followers.append(int(x))
 
@@ -27,7 +30,7 @@ print(outliers)
 
 # create a histogram
 plt.figure(1)
-# np.clip reduces all values above 5250 to one bin to minimize the size of the histogram
+# np.clip reduces all values above 3750 to one bin to minimize the size of the histogram
 plt.hist(np.clip(followersnp, 0, 3750), bins=np.arange(0, 4000, 250), histtype = "stepfilled")
 plt.ylabel("Frequency")
 plt.xlabel("Number of Followers")

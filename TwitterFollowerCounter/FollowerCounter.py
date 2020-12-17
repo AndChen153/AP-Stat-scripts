@@ -1,5 +1,7 @@
 # https://www.geeksforgeeks.org/python-status-object-in-tweepy/
-# 1-9-90 rule
+'''
+Code to find tweets from memphis area and to count the follower counts for all unique accounts found.
+'''
 import tweepy
 import time
 
@@ -8,7 +10,7 @@ class TwitterClient(object):
     twitter class for finding tweets from memphis area and counting the follwer counts for unique accounts
     '''
     def __init__(self):
-        # finding authentication keys from file to stay secure
+        # finding authentication keys from local file to keep keys secure
         keyfile = open(r"C:\Users\Andrew Chen\Dropbox\code\TwitterKeys.txt", "r")
         keys = []
         for i in keyfile:
@@ -70,7 +72,7 @@ class TwitterClient(object):
             # checks user against previously collected usernames
             if self.getUser(i) != None:
                 write = True
-                readUsers = open("Usernames.txt", "r")
+                readUsers = open("Data/Usernames.txt", "r")
                 for x in readUsers:
                     if str(self.getUser(i)[0]) in x:
                         write = False
@@ -80,10 +82,10 @@ class TwitterClient(object):
                 if write:
                     noEntries = False
                     print(i.user.screen_name, i.user.followers_count)
-                    writeUsers = open("Usernames.txt", "a")
+                    writeUsers = open("Data/Usernames.txt", "a")
                     writeUsers.write(str(self.getUser(i)[0]) + "\n")
                     writeUsers.close()
-                    writeFollowers = open("FollowerCts.txt", "a")
+                    writeFollowers = open("Data/FollowerCts.txt", "a")
                     writeFollowers.write(str(self.getUser(i)[1]) + "\n")
                     writeFollowers.close()
         if noEntries:
